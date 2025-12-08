@@ -67,17 +67,7 @@ const items: MenuItem[] = [
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
-    ConfigProvider.config({
-      theme: {
-        primaryColor: "#1FA979",
-        errorColor: "#f5222d",
-        warningColor: "#faad14",
-        successColor: "#52c41a",
-        infoColor: "#1FA979",
-      },
-    });
-  }, []);
+
   return (
     <ConfigProvider>
       <Layout style={{ minHeight: "100vh" }}>

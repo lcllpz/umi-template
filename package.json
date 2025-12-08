@@ -6,9 +6,11 @@
     "build": "umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "build:antd-theme": "lessc --js --modify-var=\"ant-prefix=custom\" node_modules/antd/dist/antd.variable.less src/styles/custom-antd.css"
   },
   "dependencies": {
+    "@ant-design/pro-components": "^2.6.50",
     "@ant-design/pro-layout": "^7.19.0",
     "@reduxjs/toolkit": "^2.9.2",
     "@types/lodash-es": "^4.17.12",
@@ -17,6 +19,7 @@
     "axios": "^1.6.8",
     "file-loader": "^6.2.0",
     "html2canvas": "^1.4.1",
+    "less": "^4.4.2",
     "lodash-es": "^4.17.21",
     "react-ace": "^11.0.1",
     "react-ace-builds": " ^7.4.1",

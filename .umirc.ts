@@ -1,4 +1,12 @@
 export default {
+  // less-loader 配置：选择 variable 入口，让编译输出基于 CSS 变量
+  lessLoader: {
+    javascriptEnabled: true,
+    modifyVars: {
+      "@root-entry-name": "variable",
+      "@my-root-entry-name": "variable",
+    },
+  },
   routes: [
     {
       path: "/",
