@@ -13,7 +13,7 @@ import React from "react";
 import "./code/12.实现静态方法any";
 
 const Index = () => {
-  return <div></div>;
+  return <div>学习Promise的源码</div>;
 };
 
 export default Index;

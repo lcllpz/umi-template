@@ -21,7 +21,7 @@ function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
-  children?: MenuItem[]
+  children?: MenuItem[],
 ): MenuItem {
   return {
     key,
@@ -41,7 +41,7 @@ const items: MenuItem[] = [
   getItem(
     "requestAnimationFrame",
     "/requestAnimationFrame",
-    <DesktopOutlined />
+    <DesktopOutlined />,
   ),
   getItem("网页复制成图片", "/to-picture", <DesktopOutlined />),
 
@@ -54,9 +54,10 @@ const items: MenuItem[] = [
   getItem(
     "label-click-modal-bug",
     "/LabelClickModalBugDemo",
-    <DesktopOutlined />
+    <DesktopOutlined />,
   ),
   getItem("theme-switch", "/theme-switch", <DesktopOutlined />),
+  getItem("虚拟列表", "/virtualList", <DesktopOutlined />),
   getItem("Team", "sub2", <TeamOutlined />, [
     getItem("Team 1", "6"),
     getItem("Team 2", "8"),
@@ -96,8 +97,8 @@ const App: React.FC = () => {
               style={{
                 boxSizing: "border-box",
                 padding: 8,
-                //   minHeight: 360,
-                height: "100%",
+                overflow: "auto",
+                height: "100vh",
               }}
             >
               <Provider store={store}>

@@ -47,6 +47,10 @@ export default {
           path: "/theme-switch",
           component: "@/pages/theme-switch",
         },
+        {
+          path: "/virtualList",
+          component: "@/pages/VirtualList",
+        },
       ],
     },
   ],
