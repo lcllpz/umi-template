@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { CustomAceEditor } from "./components/index";
 const Index = () => {
+  const [sql, setSql] = useState("");
   return (
     <div>
       <CustomAceEditor
-        value=""
+        value={sql}
+        onChange={(value) => {
+          setSql(value);
+        }}
         readOnly={false}
         height="20vh"
         mode="sql"

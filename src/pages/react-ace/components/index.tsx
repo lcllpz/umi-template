@@ -1,17 +1,18 @@
-import AceEditor from "react-ace";
 import { useEffect, useRef, useState } from "react";
+import AceEditor from "react-ace";
 import "./MaterialOneDark.js"; // pg模式包
+// import { addCompleter } from 'ace-builds/src-noconflict/ext-language_tools';
 
 // 代码提示
-import "ace-builds/webpack-resolver";
-import "ace-builds/src-noconflict/ext-spellcheck";
 import "ace-builds/src-noconflict/ext-language_tools";
+import "ace-builds/src-noconflict/ext-spellcheck";
+import "ace-builds/webpack-resolver";
 
-import "ace-builds/src-noconflict/mode-json";
-import "ace-builds/src-noconflict/mode-text";
-import "ace-builds/src-noconflict/mode-sql";
-import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/mode-sql";
+import "ace-builds/src-noconflict/mode-text";
 
 import "ace-builds/src-noconflict/ext-searchbox";
 
@@ -75,7 +76,7 @@ const CustomAceEditor = (props: propsType) => {
 
         const { pageX, pageY } = renderer.textToScreenCoordinates(
           cursorPos.row,
-          cursorPos.column
+          cursorPos.column,
         );
         const { innerHeight, innerWidth } = window;
         // 内容容器的位置
@@ -130,7 +131,7 @@ const CustomAceEditor = (props: propsType) => {
 
     editor.navigateLeft(1);
     editor.remove(1);
-    editor.insert(`{${optionValue}}`);
+    editor.insert(`{{${optionValue}}}`);
     const newPos = editor.getCursorPosition();
     editor.moveCursorTo(newPos.row, newPos.column - 1);
     setShowDropdown(false);

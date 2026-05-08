@@ -37,3 +37,32 @@
 - 实现 less 变量控制路径引入 css
 
 12. 手写虚拟列表：/virtualList
+
+13. e2e测试->playwright
+
+- 测试CustomAceEditor组件
+
+```js
+# 1. 安装 Playwright
+yarn add -D @playwright/test   # 只是装了 JS 的 API 代码
+npx playwright install chromium  # 才是真正下载浏览器内核（几百 MB）
+
+npx playwright install chromium   # 只装 Chrome 内核（最常用，体积最小）
+npx playwright install firefox    # 只装 Firefox
+npx playwright install webkit     # 只装 Safari 内核
+npx playwright install            # 三个全装
+
+playwright.config.ts // 配置中心
+
+# 2. 先启动开发服务（手动开一个终端）
+npm run dev
+
+# 3. 另一个终端跑测试
+npm run e2e
+
+# 带 UI 界面调试（推荐，可以看到每一步操作）
+npm run e2e:ui
+
+# 单步调试某个测试
+npm run e2e:debug
+```

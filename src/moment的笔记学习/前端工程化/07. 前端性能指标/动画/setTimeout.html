@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout vs requestAnimationFrame</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        const box = document.getElementById("box");
+        let position = 0;
+        let counter = 0;
+
+        function simulateHeavyTask() {
+            // 进行一些计算密集型的任务，增加CPU负担
+            for (let i = 0; i < 1e6; i++) {
+                counter += Math.random();
+            }
+        }
+
+        function animate() {
+            simulateHeavyTask(); // 每一帧都进行计算密集型任务
+
+            position += 2; // 每次更新，增加2像素
+            box.style.left = position + "px"; // 更新方块的位置
+
+            // 使用 setTimeout 来模拟动画的逐帧效果
+            if (position < window.innerWidth - 100) {
+                setTimeout(animate, 1000 / 60); // 每 16.67ms 更新一次，相当于60fps
+            }
+        }
+
+        // 启动动画
+        setTimeout(animate, 1000 / 60);
+    </script>
+</body>
+
+</html>

@@ -7,7 +7,10 @@
     "postinstall": "umi setup",
     "setup": "umi setup",
     "start": "npm run dev",
-    "build:antd-theme": "lessc --js --modify-var=\"ant-prefix=custom\" node_modules/antd/dist/antd.variable.less src/styles/custom-antd.css"
+    "build:antd-theme": "lessc --js --modify-var=\"ant-prefix=custom\" node_modules/antd/dist/antd.variable.less src/styles/custom-antd.css",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "@ant-design/pro-components": "^2.6.50",
@@ -30,6 +33,7 @@
     "video.js": "^8.10.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "@umijs/plugins": "^4.2.3",
