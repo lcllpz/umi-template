@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ETag 协商缓存示例</title>
+  </head>
+  <body>
+    <h1>ETag 缓存测试</h1>
+    <button onclick="loadFile()">加载资源</button>
+    <pre id="output"></pre>
+
+    <script>
+      function loadFile() {
+        fetch("/file.txt")
+          .then((res) => {
+            document.getElementById("output").textContent =
+              `状态码: ${res.status}\n\n` +
+              `ETag: ${res.headers.get("etag")}\n\n`;
+
+            return res.text();
+          })
+          .then((text) => {
+            document.getElementById("output").textContent += `内容:\n${text}`;
+          })
+          .catch((err) => console.error(err));
+      }
+    </script>
+  </body>
+</html>
