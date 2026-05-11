@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SW 通知：定时器模拟推送</title>
+  </head>
+  <body>
+    <h1>定时器模拟推送 → SW → 系统通知</h1>
+    <p>
+      请用 <strong>http://localhost</strong> 打开本目录（例如用任意静态服务器指向
+      <code>07. 前端性能指标</code>），<strong>不能</strong>用
+      <code>file://</code>，否则无法注册 Service Worker。
+    </p>
+    <p>
+      打开后允许<strong>通知</strong>权限；主线程定时
+      <code>postMessage({ type: 'SIMULATE_PUSH', body, url })</code>，SW 里
+      <code>showNotification</code>。若页面状态在动但<strong>没有系统通知</strong>：Chrome
+      → F12 →「应用」→ Service Workers → 本页 SW 的「inspect」打开<strong>Worker 控制台</strong>，看是否有
+      <code>showNotification</code> 报错；并检查 Windows
+      专注助手/系统设置里是否允许 Chrome 发通知。
+    </p>
+    <p id="status" style="font-family: monospace; color: #333"></p>
+    <script src="./main.js" defer></script>
+  </body>
+</html>

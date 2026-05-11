@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>worker performance optimization</title>
+  </head>
+  <body>
+    <script>
+      // 创建两个独立 Worker
+      const workerB = new Worker("workerB.js");
+      const workerD = new Worker("workerD.js");
+
+      // 调用函数 a → b（交给 workerB）
+      function a() {
+        b();
+      }
+      function b() {
+        workerB.postMessage("start");
+      }
+
+      // 调用函数 c → d（交给 workerD）
+      function c() {
+        d();
+      }
+      function d() {
+        workerD.postMessage("start");
+      }
+
+      // 监听 workerB 结果
+      workerB.onmessage = function (e) {
+        console.log("b:", e.data.total);
+      };
+
+      // 监听 workerD 结果
+      workerD.onmessage = function (e) {
+        console.log("d:", e.data.total);
+      };
+
+      // 执行流程
+      a();
+      c();
+    </script>
+  </body>
+</html>
